@@ -31,7 +31,7 @@ func scanJugada(tab []byte, p byte) {
 		fmt.Printf("Nueva posicion %c [0-7] [0-7]: ", rune(p))
 		fmt.Scanf("%d %d\n", &i, &j)
 		idx := i  + j * 8
-		if i >= 0 && i < 8 && j >= 0 && j < 8 && tab[idx] == ' ' {
+		if i >= 0 && i < 8 && j >= 0 && j < 8 && tab[idx] != p {
 			tab[idx] = p
 			valid2 = true
 		} else {
@@ -62,7 +62,7 @@ func findWinner(tab []byte) byte {
 
 func chooseOpositeToken(tab [] byte) byte {
 	var token byte
-	for i := 0; i < 64; i++ {
+	for i := 16; i < 48; i++ {
 		if tab[i] != 0 {
 			token = tab[i]
 			break
