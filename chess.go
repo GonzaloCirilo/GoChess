@@ -58,10 +58,10 @@ func scanJugada(tab []byte, p byte) {
 func findWinner(tab []byte) byte {
 	var contm, contM int
 	for i := 0; i < 64; i++ {
-		if checkToken(tab[i],109){
+		if tab[i] == 107{
 			contm++
 		}
-		if checkToken(tab[i],77){
+		if tab[i] == 75{
 			contM++
 		}
 	}
