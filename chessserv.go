@@ -21,14 +21,14 @@ func sesion(conn net.Conn, chFirstPlayer chan bool) {
 	w := bufio.NewWriter(conn)
 	buff := make([]byte,67)
 	buff2 :=[]byte{
-		'x','x','x','x','x','x','x','x',
-		'x','x','x','x','x','x','x','x',
+		't','c','a','q','k','a','c','t',
+		'p','p','p','p','p','p','p','p',
 		' ',' ',' ',' ',' ',' ',' ',' ',
 		' ',' ',' ',' ',' ',' ',' ',' ',
 		' ',' ',' ',' ',' ',' ',' ',' ',
 		' ',' ',' ',' ',' ',' ',' ',' ',
-		'o','o','o','o','o','o','o','o',
-		'o','o','o','o','o','o','o','o'}
+		'P','P','P','P','P','P','P','P',
+		'T','C','A','K','Q','A','C','T'}
 	//setTab(buff,buff2)
 	r.Read(buff)
 	msg := getMsg(buff)

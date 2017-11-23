@@ -12,14 +12,29 @@ func drawTab(tab []byte) {
 	}
 }
 
+func checkToken(token byte, tipo byte) bool{
+	if tipo == 'm'{
+		if token >= 97 && token <= 122{
+			return true
+		}
+	}
+	if tipo == 'M'{
+		if token >= 65 && token <= 90{
+			return true
+		}
+	}
+	return false
+}
+
 func scanJugada(tab []byte, p byte) {
-	var i, j byte
+	var i, j, token byte
 	valid := false
 	for !valid {
 		fmt.Printf("Ficha elegida %c [0-7] [0-7]: ", rune(p))
 		fmt.Scanf("%d %d\n", &i, &j)
 		idx := i + j * 8
-		if i >= 0 && i < 8 && j >= 0 && j < 8 && tab[idx] == p {
+		if i >= 0 && i < 8 && j >= 0 && j < 8 && checkToken(tab[idx], p) {
+			token = tab[idx]
 			tab[idx] = 0
 			valid = true
 		} else {
@@ -31,8 +46,8 @@ func scanJugada(tab []byte, p byte) {
 		fmt.Printf("Nueva posicion %c [0-7] [0-7]: ", rune(p))
 		fmt.Scanf("%d %d\n", &i, &j)
 		idx := i  + j * 8
-		if i >= 0 && i < 8 && j >= 0 && j < 8 && tab[idx] != p {
-			tab[idx] = p
+		if i >= 0 && i < 8 && j >= 0 && j < 8 && !checkToken(tab[idx], p) {
+			tab[idx] = token
 			valid2 = true
 		} else {
 			fmt.Println(" --- Jugada no permitida ---")
@@ -41,20 +56,20 @@ func scanJugada(tab []byte, p byte) {
 }
 
 func findWinner(tab []byte) byte {
-	var contx, conto int
+	var contm, contM int
 	for i := 0; i < 64; i++ {
-		if tab[i] == 120{
-			contx++
+		if checkToken(tab[i],109){
+			contm++
 		}
-		if tab[i] == 111{
-			conto++
+		if checkToken(tab[i],77){
+			contM++
 		}
 	}
-	if conto == 0 {
-		return 120
+	if contm == 0 {
+		return 77
 	}
-	if contx == 0{
-		return 111
+	if contM == 0{
+		return 109
 	}
 	return 0
 }
@@ -62,12 +77,12 @@ func findWinner(tab []byte) byte {
 func chooseOpositeToken(tab [] byte) byte {
 	for i := 0; i < 16; i++ {
 		if tab[i] == 0 {
-			return 111
+			return 77
 		}
 	}
 	for i := 48; i < 64; i++{
 		if tab[i] == 0{
-			return 120
+			return 109
 			}
 	}
 	return 0
@@ -75,10 +90,10 @@ func chooseOpositeToken(tab [] byte) byte {
 
 func pickToken() byte {
 	p := '-'
-	for p != 'o' && p != 'x' {
-		fmt.Println("Seleccione ficha [x,o]: ")
+	for p != 'm' && p != 'M' {
+		fmt.Println("Seleccione ficha [m,M]: ")
 		fmt.Scanf("%c\n", &p)
-		if p != 'o' && p != 'x' {
+		if p != 'm' && p != 'M' {
 			fmt.Println(" --- Ficha no permitida ---")
 		}
 	}
