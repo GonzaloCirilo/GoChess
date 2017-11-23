@@ -41,37 +41,34 @@ func scanJugada(tab []byte, p byte) {
 }
 
 func findWinner(tab []byte) byte {
-	/*for i := 0; i < 8; i++ {
-		if (tab[i*8] == tab[i*8+1] && tab[i*8+1] == tab[i*3+2]) ||
-		   (tab[i] == tab[i+3] && tab[i+3] == tab[i+6]) {
-			return tab[i*4]
+	var contx, conto int
+	for i := 0; i < 64; i++ {
+		if tab[i] == 120{
+			contx++
+		}
+		if tab[i] == 111{
+			conto++
 		}
 	}
-	if (tab[0] == tab[4] && tab[4] == tab[8]) ||
-	   (tab[2] == tab[4] && tab[4] == tab[6]) {
-	   	return tab[4]
+	if conto == 0 {
+		return 120
 	}
-	for i := 0; i < 9; i++ {
-		if tab[i] != 0 {
-			return 0;
-		}
+	if contx == 0{
+		return 111
 	}
-	return byte('-')*/ // empate
 	return 0
 }
 
 func chooseOpositeToken(tab [] byte) byte {
-	var token byte
-	for i := 16; i < 48; i++ {
-		if tab[i] != 0 {
-			token = tab[i]
-			break
+	for i := 0; i < 16; i++ {
+		if tab[i] == 0 {
+			return 111
 		}
 	}
-	if token == 111 {
-		return 120
-	} else if token == 120 {
-		return 111
+	for i := 48; i < 64; i++{
+		if tab[i] == 0{
+			return 120
+			}
 	}
 	return 0
 }

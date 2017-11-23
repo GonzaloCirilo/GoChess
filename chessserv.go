@@ -29,7 +29,7 @@ func sesion(conn net.Conn, chFirstPlayer chan bool) {
 		' ',' ',' ',' ',' ',' ',' ',' ',
 		'o','o','o','o','o','o','o','o',
 		'o','o','o','o','o','o','o','o'}
-	setTab(buff,buff2)
+	//setTab(buff,buff2)
 	r.Read(buff)
 	msg := getMsg(buff)
 	sid := getSessId(buff)

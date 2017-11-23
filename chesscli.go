@@ -16,8 +16,7 @@ func callServer(msg, sid, pid *byte, tab *[]byte) {
 	setMsg(buff, *msg)
 	setSessId(buff, *sid)
 	setPlayerId(buff, *pid)
-	setTab(
-		buff, *tab)
+	setTab(buff, *tab)
 	w.Write(buff)
 	w.Flush()
 	r.Read(buff)
