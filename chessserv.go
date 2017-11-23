@@ -20,7 +20,7 @@ func sesion(conn net.Conn, chFirstPlayer chan bool) {
 	r := bufio.NewReader(conn)
 	w := bufio.NewWriter(conn)
 	buff := make([]byte,67)
-	buff2 :=[]byte{/*' ',' ',' ',*/
+	buff2 :=[]byte{
 		'x','x','x','x','x','x','x','x',
 		'x','x','x','x','x','x','x','x',
 		' ',' ',' ',' ',' ',' ',' ',' ',
@@ -29,10 +29,6 @@ func sesion(conn net.Conn, chFirstPlayer chan bool) {
 		' ',' ',' ',' ',' ',' ',' ',' ',
 		'o','o','o','o','o','o','o','o',
 		'o','o','o','o','o','o','o','o'}
-		//make([]byte, 67)
-	/*for i:=0; i<15; i++{
-		buff[i] = 120
-	}*/
 	setTab(buff,buff2)
 	r.Read(buff)
 	msg := getMsg(buff)
