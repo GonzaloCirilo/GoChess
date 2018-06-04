@@ -1,2 +1,2 @@
 # GoChess
-Distributed Chess Game with Go
+Two player Chess Game with Go
